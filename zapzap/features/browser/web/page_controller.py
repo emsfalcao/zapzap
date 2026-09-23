@@ -9,7 +9,6 @@ from PyQt6.QtCore import QUrl
 from PyQt6.QtGui import QDesktopServices
 
 from zapzap import __allowed_hosts__
-from zapzap.features.customizations.addons_manager import AddonsManager
 from zapzap.features.alerts.alert_manager import AlertManager
 from zapzap.features.customizations.customizations_manager import CustomizationsManager
 from zapzap.core.theme.theme_manager import ThemeManager
@@ -332,8 +331,7 @@ class PageController(QWebEnginePage):
     def _on_load_finished(self, success):
         """Ações realizadas após o carregamento da página."""
         if success:
-            # Injeta os addons
-            AddonsManager.inject_addons(self)
+            # Fork FalcaoNet: carregador de addons .js removido (vetor de injeção no WhatsApp Web).
             self.apply_customizations()
 
             # Permite notificações automaticamente
@@ -345,7 +343,8 @@ class PageController(QWebEnginePage):
 
     def apply_customizations(self):
         self.apply_custom_css()
-        self.apply_custom_js()
+        if CustomizationsManager.JS_CUSTOMIZATIONS_ENABLED:  # Fork FalcaoNet: False
+            self.apply_custom_js()
 
     def apply_custom_css(self):
         css_entries = CustomizationsManager.build_effective_ordered_assets(

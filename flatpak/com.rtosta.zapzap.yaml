@@ -11,9 +11,8 @@ finish-args:
   - "--socket=fallback-x11"
   - "--socket=pulseaudio"
   - "--share=network"
+  - "--filesystem=xdg-run/pipewire-0"
   - "--device=all"
-  - "--filesystem=xdg-documents"
-  - "--filesystem=xdg-pictures"
   - "--filesystem=xdg-download"
   - "--talk-name=org.freedesktop.Notifications"
   - "--talk-name=org.kde.StatusNotifierWatcher"
@@ -40,6 +39,27 @@ modules:
     sources: []
 
   # Zapzap wheel build
+  # Fork FalcaoNet: dicionários do corretor convertidos no build (sem download em tempo de execução)
+  - name: dicionarios
+    buildsystem: simple
+    build-commands:
+      - |
+        set -e
+        CONV=$(command -v qwebengine_convert_dict || ls /app/lib/qt6/libexec/qwebengine_convert_dict /usr/lib/x86_64-linux-gnu/qt6/libexec/qwebengine_convert_dict /usr/lib/qt6/libexec/qwebengine_convert_dict 2>/dev/null | head -1)
+        test -x "$CONV" || { echo "qwebengine_convert_dict não encontrado"; exit 1; }
+        mkdir -p ${FLATPAK_DEST}/qtwebengine_dictionaries
+        "$CONV" pt_BR.dic ${FLATPAK_DEST}/qtwebengine_dictionaries/pt-BR.bdic
+        "$CONV" en_US.dic ${FLATPAK_DEST}/qtwebengine_dictionaries/en-US.bdic
+        ls -la ${FLATPAK_DEST}/qtwebengine_dictionaries
+    sources:
+      - type: file
+        path: dictionaries/pt_BR.dic
+      - type: file
+        path: dictionaries/pt_BR.aff
+      - type: file
+        path: dictionaries/en_US.dic
+      - type: file
+        path: dictionaries/en_US.aff
   - name: zapzap
     buildsystem: simple
     build-commands:

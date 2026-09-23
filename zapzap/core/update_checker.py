@@ -132,6 +132,8 @@ class UpdatePolicy:
 
     @classmethod
     def should_check_current_environment(cls) -> bool:
+        # Fork FalcaoNet: nunca consulta api.github.com; atualização vem do nosso git/Flatpak local.
+        return False
         return cls.should_check(
             EnvironmentDetector.CHANNEL,
             EnvironmentDetector.PROVIDER,

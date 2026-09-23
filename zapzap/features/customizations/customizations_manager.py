@@ -19,6 +19,8 @@ class CustomizationsManager:
 
     TYPE_CSS = "css"
     TYPE_JS = "js"
+    # Fork FalcaoNet: customizações em JS desligadas (só CSS) — JS injetado no WhatsApp Web é vetor de exfiltração.
+    JS_CUSTOMIZATIONS_ENABLED = False
     MAX_DOWNLOAD_SIZE = 2 * 1024 * 1024
 
     @staticmethod
@@ -125,6 +127,8 @@ class CustomizationsManager:
 
     @staticmethod
     def list_asset_files(scope: str, asset_type: str, account_id=None):
+        if asset_type == CustomizationsManager.TYPE_JS and not CustomizationsManager.JS_CUSTOMIZATIONS_ENABLED:
+            return []
         assets_dir = CustomizationsManager.get_assets_dir(scope, asset_type, account_id)
         ext = ".css" if asset_type == CustomizationsManager.TYPE_CSS else ".js"
 
@@ -327,6 +331,8 @@ class CustomizationsManager:
 
     @staticmethod
     def import_asset_file(source_path: str, scope: str, asset_type: str, account_id=None):
+        if asset_type == CustomizationsManager.TYPE_JS and not CustomizationsManager.JS_CUSTOMIZATIONS_ENABLED:
+            raise ValueError("Customizações em JavaScript estão desativadas neste build (fork FalcaoNet)")
         assets_dir = CustomizationsManager.get_assets_dir(scope, asset_type, account_id)
 
         base_name = os.path.basename(source_path)
@@ -388,6 +394,8 @@ class CustomizationsManager:
 
     @staticmethod
     def import_js_from_url(url: str, scope: str, account_id=None, file_name: str = ""):
+        if not CustomizationsManager.JS_CUSTOMIZATIONS_ENABLED:
+            raise ValueError("Customizações em JavaScript estão desativadas neste build (fork FalcaoNet)")
         content = CustomizationsManager._download_url_content(url)
 
         default_name = os.path.basename(urllib.parse.urlparse(url).path) or "script.js"
