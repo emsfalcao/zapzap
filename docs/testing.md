@@ -77,6 +77,10 @@ documente o que ele protege.
 | `test_accounts_settings_ui.py` | card responsivo com ações diretas, remoção, estados/avisos e diálogo transacional sem moldura |
 | `test_appearance_settings_ui.py` | grupos, dependências, layout responsivo, persistência e acessibilidade |
 | `test_appimage_packaging.py` | coerência FFmpeg/Qt WebEngine, verificação de ABI, nome final fornecido ao quick-sharun e ausência de renomeação posterior do AppImage/zsync |
+| `test_automation_dom.py` | scripts DOM da automação: seletores como literal JSON, statuses documentados, clique no botão enviar sem Enter sintético, `parse_chat_state` tolerante e toast com `json.dumps` |
+| `test_automation_runner.py` | runner serializado da automação com página falsa: fluxo feliz, não logado, chat que não abre, número inválido, grupo ignorado, sem botão/compositor, limite por hora, conta inativa, ordem da fila e `stop()` |
+| `test_automation_settings.py` | domínio da automação: HH:MM, janela diária cruzando a meia-noite, E.164, texto, mensagem agendada, vencidos/tolerância, limite por hora, cooldown, defaults desligados, persistência e página de Configurações |
+| `test_away_reply_service.py` | decisões da resposta de ausência (desligado, horário, foco, chave, cooldown, fila, limite), abertura por `notification.click()` e gancho antes das saídas antecipadas da `NotificationService` |
 | `test_browser_account_lifecycle.py` | registro estável, criação lazy de contas desativadas, isolamento/retentativa de perfil com erro, reativação, remoção, notificações e encerramento idempotente |
 | `test_browser_page_button_ui.py` | avatar sem número, grayscale de conta desativada, ponto de estado, card, temas, escala e clique |
 | `test_check_box.py` | API, variantes, tamanhos, pintura, temas, tri-state, mouse, teclado e acessibilidade do CheckBox |
@@ -109,6 +113,8 @@ documente o que ele protege.
 | `test_quick_phrases_settings.py` | normalização/validação de atalho, persistência JSON, ordenação, unicode, storage corrompido e página de Configurações das frases prontas |
 | `test_reporting.py` | sanitização, minimização, Markdown, fila/TTL e captura local de encerramentos inesperados |
 | `test_reporting_ui.py` | formulário em duas etapas, prévia canônica, edição, cancelamento, clipboard e abertura segura do GitHub |
+| `test_schedule_message_dialog.py` | horário padrão, pré-preenchimento, validação (número, passado, texto vazio) e aviso de automação desativada no diálogo de agendamento |
+| `test_scheduled_send_service.py` | agendador: desligado, só vencidos, deeplink sem `text`, tolerância de atraso, 3 tentativas com espera, limite sem consumir tentativa, reenviar agora e número inválido |
 | `test_segmented_control.py` | seleção exclusiva, sinais, mouse, teclado, acessibilidade, tamanhos, raios e temas |
 | `test_send_message_to_number.py` | normalização/URL, lista de países, validação, acessibilidade e teclado do diálogo de conversa por número |
 | `test_settings_card.py` | divisores e grupos do card compartilhado em `ui.components` |
@@ -130,6 +136,10 @@ documente o que ele protege.
 - `test_accounts_settings_ui.py`
 - `test_appearance_settings_ui.py`
 - `test_appimage_packaging.py`
+- `test_automation_dom.py`
+- `test_automation_runner.py`
+- `test_automation_settings.py`
+- `test_away_reply_service.py`
 - `test_browser_account_lifecycle.py`
 - `test_browser_page_button_ui.py`
 - `test_check_box.py`
@@ -162,6 +172,8 @@ documente o que ele protege.
 - `test_quick_phrases_settings.py`
 - `test_reporting.py`
 - `test_reporting_ui.py`
+- `test_schedule_message_dialog.py`
+- `test_scheduled_send_service.py`
 - `test_segmented_control.py`
 - `test_send_message_to_number.py`
 - `test_settings_card.py`

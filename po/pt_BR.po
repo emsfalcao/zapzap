@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZapZap\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 14:32-0300\n"
+"POT-Creation-Date: 2026-09-23 15:09-0300\n"
 "PO-Revision-Date: 2026-08-26 14:30-0300\n"
 "Last-Translator: ZapZap contributors\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -15,9 +15,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: zapzap/app/main_window_controller.py:261
+#: zapzap/app/main_window_controller.py:266
 msgid "Quick phrases are disabled in Settings"
 msgstr "Frases prontas desativadas nas Configurações"
+
+#: zapzap/app/main_window_controller.py:304
+#: zapzap/features/browser/shell/browser_controller.py:548
+#: zapzap/features/browser/shell/browser_controller.py:629
+#, python-brace-format
+msgid "Account {}"
+msgstr "Conta {}"
+
+#: zapzap/app/main_window_controller.py:322
+msgid "Message scheduled"
+msgstr "Mensagem agendada"
 
 #: zapzap/app/window_lifecycle.py:89
 msgid "Close ZapZap"
@@ -230,7 +241,7 @@ msgstr ""
 
 #: zapzap/features/donation/view.py:213 zapzap/features/shortcuts/view.py:60
 #: zapzap/features/settings/pages/debugging/view.py:425
-#: zapzap/ui/components/main_window.py:137
+#: zapzap/ui/components/main_window.py:140
 msgid "ZapZap"
 msgstr "ZapZap"
 
@@ -317,6 +328,7 @@ msgid "Other"
 msgstr "Outro"
 
 #: zapzap/features/reporting/dialogs.py:38
+#: zapzap/features/settings/pages/automation/view.py:182
 msgid "Always"
 msgstr "Sempre"
 
@@ -420,7 +432,7 @@ msgstr ""
 #: zapzap/features/reporting/dialogs.py:136
 #: zapzap/features/reporting/dialogs.py:159
 #: zapzap/features/reporting/dialogs.py:292
-#: zapzap/features/settings/shell/settings_controller.py:182
+#: zapzap/features/settings/shell/settings_controller.py:188
 #: zapzap/features/settings/pages/debugging/view.py:160
 #: zapzap/features/settings/pages/debugging/view.py:177
 #: zapzap/features/settings/pages/about/view.py:269
@@ -482,6 +494,8 @@ msgstr "Incluir registros sanitizados, quando disponíveis"
 #: zapzap/ui/components/quick_phrase_picker_dialog.py:159
 #: zapzap/ui/components/send_message_to_number_dialog.py:262
 #: zapzap/ui/components/send_message_to_number_dialog.py:268
+#: zapzap/ui/components/schedule_message_dialog.py:220
+#: zapzap/ui/components/schedule_message_dialog.py:223
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -564,6 +578,7 @@ msgstr "Revisar e abrir o relatório selecionado"
 #: zapzap/ui/components/send_message_to_number_dialog.py:135
 #: zapzap/ui/components/dictionary_manager_dialog.py:91
 #: zapzap/ui/components/dictionary_manager_dialog.py:193
+#: zapzap/ui/components/schedule_message_dialog.py:124
 msgid "Close"
 msgstr "Fechar"
 
@@ -1124,14 +1139,14 @@ msgstr "Exibir"
 #: zapzap/features/tray/sys_tray_manager.py:51
 #: zapzap/features/shortcuts/model.py:22 zapzap/features/shortcuts/model.py:38
 #: zapzap/features/settings/shell/settings_sidebar.py:61
-#: zapzap/features/settings/shell/settings_controller.py:240
-#: zapzap/ui/components/main_window.py:147
+#: zapzap/features/settings/shell/settings_controller.py:246
+#: zapzap/ui/components/main_window.py:150
 msgid "Settings"
 msgstr "Configurações"
 
 #: zapzap/features/tray/sys_tray_manager.py:53
 #: zapzap/features/settings/shell/settings_view.py:38
-#: zapzap/ui/components/main_window.py:143
+#: zapzap/ui/components/main_window.py:146
 msgid "Quit"
 msgstr "Sair"
 
@@ -1235,6 +1250,7 @@ msgstr ""
 
 #: zapzap/features/accounts/card_user_controller.py:167
 #: zapzap/features/settings/pages/quick_phrases/view.py:96
+#: zapzap/features/settings/pages/automation/view.py:266
 #: zapzap/ui/components/dictionary_manager_dialog.py:191
 #: zapzap/ui/components/card_user.py:153
 msgid "Remove"
@@ -1335,7 +1351,7 @@ msgid "Extended search"
 msgstr "Pesquisa avançada"
 
 #: zapzap/features/shortcuts/model.py:39
-#: zapzap/ui/components/main_window.py:145
+#: zapzap/ui/components/main_window.py:148
 msgid "Hide"
 msgstr "Ocultar"
 
@@ -1348,32 +1364,32 @@ msgid "Fullscreen"
 msgstr "Tela cheia"
 
 #: zapzap/features/shortcuts/model.py:42
-#: zapzap/ui/components/main_window.py:162
+#: zapzap/ui/components/main_window.py:165
 msgid "Automatic theme"
 msgstr "Tema automático"
 
 #: zapzap/features/shortcuts/model.py:43
-#: zapzap/ui/components/main_window.py:164
+#: zapzap/ui/components/main_window.py:167
 msgid "Light theme"
 msgstr "Tema claro"
 
 #: zapzap/features/shortcuts/model.py:44
-#: zapzap/ui/components/main_window.py:166
+#: zapzap/ui/components/main_window.py:169
 msgid "Dark theme"
 msgstr "Tema escuro"
 
 #: zapzap/features/shortcuts/model.py:45
-#: zapzap/ui/components/main_window.py:149
+#: zapzap/ui/components/main_window.py:152
 msgid "Reset zoom"
 msgstr "Redefinir zoom"
 
 #: zapzap/features/shortcuts/model.py:46
-#: zapzap/ui/components/main_window.py:151
+#: zapzap/ui/components/main_window.py:154
 msgid "Zoom in"
 msgstr "Aumentar zoom"
 
 #: zapzap/features/shortcuts/model.py:47
-#: zapzap/ui/components/main_window.py:153
+#: zapzap/ui/components/main_window.py:156
 msgid "Zoom out"
 msgstr "Diminuir zoom"
 
@@ -1395,13 +1411,19 @@ msgid "Quick phrases"
 msgstr "Frases prontas"
 
 #: zapzap/features/shortcuts/model.py:51
+#: zapzap/ui/components/schedule_message_dialog.py:69
+#: zapzap/ui/components/schedule_message_dialog.py:116
+msgid "Schedule message"
+msgstr "Agendar mensagem"
+
+#: zapzap/features/shortcuts/model.py:52
 #: zapzap/features/browser/shell/browser_controller.py:531
 #: zapzap/ui/components/browser_sidebar.py:188
 msgid "New account"
 msgstr "Nova conta"
 
 #: zapzap/features/shortcuts/view.py:34 zapzap/features/shortcuts/view.py:42
-#: zapzap/ui/components/main_window.py:176
+#: zapzap/ui/components/main_window.py:181
 msgid "Keyboard shortcuts"
 msgstr "Atalhos de teclado"
 
@@ -1446,7 +1468,7 @@ msgstr "Há um dicionário diferente chamado {code} instalado. Substituí-lo?"
 msgid "Select folder"
 msgstr "Selecionar pasta"
 
-#: zapzap/features/notifications/notification_service.py:122
+#: zapzap/features/notifications/notification_service.py:133
 msgid "New message..."
 msgstr "Nova mensagem..."
 
@@ -1512,12 +1534,6 @@ msgstr "Instruções"
 #: zapzap/features/browser/shell/browser_controller.py:315
 msgid "Copy command"
 msgstr "Copiar comando"
-
-#: zapzap/features/browser/shell/browser_controller.py:548
-#: zapzap/features/browser/shell/browser_controller.py:629
-#, python-brace-format
-msgid "Account {}"
-msgstr "Conta {}"
 
 #: zapzap/features/browser/shell/browser_controller.py:642
 msgid "Account disabled"
@@ -1691,27 +1707,32 @@ msgid "System and startup"
 msgstr "Sistema e inicialização"
 
 #: zapzap/features/settings/shell/settings_controller.py:158
+#: zapzap/features/settings/pages/automation/view.py:38
+msgid "Automation"
+msgstr "Automação"
+
+#: zapzap/features/settings/shell/settings_controller.py:164
 #: zapzap/features/settings/pages/language_downloads/view.py:21
 msgid "Language and Download"
 msgstr "Idioma e downloads"
 
-#: zapzap/features/settings/shell/settings_controller.py:164
+#: zapzap/features/settings/shell/settings_controller.py:170
 #: zapzap/features/settings/pages/network_privacy/view.py:149
 msgid "Privacy and Network"
 msgstr "Privacidade e Rede"
 
-#: zapzap/features/settings/shell/settings_controller.py:170
+#: zapzap/features/settings/shell/settings_controller.py:176
 msgid "Advanced Customizations"
 msgstr "Customizações avançadas"
 
-#: zapzap/features/settings/shell/settings_controller.py:176
+#: zapzap/features/settings/shell/settings_controller.py:182
 #: zapzap/features/settings/pages/performance_experimental/view.py:21
 msgid "Performance experimental"
 msgstr "Desempenho experimental"
 
-#: zapzap/features/settings/shell/settings_controller.py:188
+#: zapzap/features/settings/shell/settings_controller.py:194
 #: zapzap/features/settings/pages/about/view.py:238
-#: zapzap/ui/components/main_window.py:178
+#: zapzap/ui/components/main_window.py:183
 msgid "About"
 msgstr "Sobre"
 
@@ -1743,7 +1764,9 @@ msgstr "Frase inválida."
 msgid ""
 "Reusable texts inserted into the message box on demand. Nothing is sent "
 "automatically: you always press send."
-msgstr "Textos reutilizáveis inseridos na caixa de mensagem quando você pedir. Nada é enviado automaticamente: quem envia é sempre você."
+msgstr ""
+"Textos reutilizáveis inseridos na caixa de mensagem quando você pedir. Nada "
+"é enviado automaticamente: quem envia é sempre você."
 
 #: zapzap/features/settings/pages/quick_phrases/view.py:51
 msgid "Open the picker from the Chat menu or with Ctrl+Shift+F."
@@ -3786,6 +3809,246 @@ msgstr "Salvar e recarregar"
 msgid "Reload page"
 msgstr "Recarregar página"
 
+#: zapzap/features/settings/pages/automation/controller.py:135
+msgid "The reply is too long."
+msgstr "A resposta é longa demais."
+
+#: zapzap/features/settings/pages/automation/controller.py:137
+msgid "Enter the reply text."
+msgstr "Informe o texto da resposta."
+
+#: zapzap/features/settings/pages/automation/controller.py:160
+msgid "Use the format HH:MM, for example 18:00."
+msgstr "Use o formato HH:MM, por exemplo 18:00."
+
+#: zapzap/features/settings/pages/automation/controller.py:182
+msgid "pending"
+msgstr "pendente"
+
+#: zapzap/features/settings/pages/automation/controller.py:183
+msgid "sent"
+msgstr "enviada"
+
+#: zapzap/features/settings/pages/automation/controller.py:184
+msgid "failed"
+msgstr "falhou"
+
+#: zapzap/features/settings/pages/automation/controller.py:185
+msgid "expired"
+msgstr "expirada"
+
+#: zapzap/features/settings/pages/automation/view.py:40
+msgid ""
+"Automatic away replies and scheduled messages, sent over WhatsApp Web with "
+"human-like delays and hourly limits."
+msgstr "Respostas automáticas de ausência e mensagens agendadas, enviadas por cima do WhatsApp Web com atrasos \"humanos\" e limite por hora."
+
+#: zapzap/features/settings/pages/automation/view.py:58
+msgid "Before you enable it"
+msgstr "Antes de ativar"
+
+#: zapzap/features/settings/pages/automation/view.py:59
+msgid "Everything here is off by default and every event is logged."
+msgstr "Tudo aqui vem desligado por padrão e cada evento fica registrado no log."
+
+#: zapzap/features/settings/pages/automation/view.py:64
+msgid ""
+"This feature acts on top of WhatsApp Web and is not official. WhatsApp may "
+"restrict or ban the number. Use it sparingly."
+msgstr "Este recurso age por cima do WhatsApp Web e não é oficial. O WhatsApp pode restringir ou banir o número. Use com moderação."
+
+#: zapzap/features/settings/pages/automation/view.py:76
+msgid "General"
+msgstr "Geral"
+
+#: zapzap/features/settings/pages/automation/view.py:77
+msgid "Limits shared by away replies and scheduled messages."
+msgstr "Limites compartilhados entre resposta de ausência e mensagens agendadas."
+
+#: zapzap/features/settings/pages/automation/view.py:81
+msgid "Enable automation"
+msgstr "Ativar automação"
+
+#: zapzap/features/settings/pages/automation/view.py:82
+msgid "Master switch. Nothing runs while it is off."
+msgstr "Interruptor geral. Nada roda enquanto estiver desligado."
+
+#: zapzap/features/settings/pages/automation/view.py:88
+msgid "Minimum delay before sending"
+msgstr "Atraso mínimo antes de enviar"
+
+#: zapzap/features/settings/pages/automation/view.py:89
+msgid "Random wait, in seconds, before each automatic send."
+msgstr "Espera aleatória, em segundos, antes de cada envio automático."
+
+#: zapzap/features/settings/pages/automation/view.py:91
+#: zapzap/features/settings/pages/automation/view.py:98
+#, python-brace-format
+msgid "{} s"
+msgstr "{} s"
+
+#: zapzap/features/settings/pages/automation/view.py:95
+msgid "Maximum delay before sending"
+msgstr "Atraso máximo antes de enviar"
+
+#: zapzap/features/settings/pages/automation/view.py:96
+msgid "Upper bound of the random wait, in seconds."
+msgstr "Limite superior da espera aleatória, em segundos."
+
+#: zapzap/features/settings/pages/automation/view.py:102
+msgid "Maximum automatic sends per hour"
+msgstr "Máximo de envios automáticos por hora"
+
+#: zapzap/features/settings/pages/automation/view.py:103
+msgid "Counts away replies and scheduled messages together."
+msgstr "Soma respostas de ausência e mensagens agendadas."
+
+#: zapzap/features/settings/pages/automation/view.py:106
+#, python-brace-format
+msgid "{} per hour"
+msgstr "{} por hora"
+
+#: zapzap/features/settings/pages/automation/view.py:111
+msgid "Automation log"
+msgstr "Log da automação"
+
+#: zapzap/features/settings/pages/automation/view.py:112
+msgid ""
+"One line per event: account, type, target and result. No message content."
+msgstr "Uma linha por evento: conta, tipo, destino e resultado. Sem o conteúdo da mensagem."
+
+#: zapzap/features/settings/pages/automation/view.py:113
+msgid "Open log"
+msgstr "Abrir log"
+
+#: zapzap/features/settings/pages/automation/view.py:123
+msgid "Away reply"
+msgstr "Resposta de ausência"
+
+#: zapzap/features/settings/pages/automation/view.py:124
+msgid "Replies once per conversation when a message arrives and you are away."
+msgstr "Responde uma vez por conversa quando chega mensagem e você está ausente."
+
+#: zapzap/features/settings/pages/automation/view.py:128
+msgid "Enable away reply"
+msgstr "Ativar resposta de ausência"
+
+#: zapzap/features/settings/pages/automation/view.py:129
+#: zapzap/features/settings/pages/automation/view.py:233
+msgid "Requires the automation master switch."
+msgstr "Exige o interruptor geral da automação."
+
+#: zapzap/features/settings/pages/automation/view.py:139
+#: zapzap/features/settings/pages/automation/view.py:153
+msgid "Reply text"
+msgstr "Texto da resposta"
+
+#: zapzap/features/settings/pages/automation/view.py:151
+msgid "Hi! I am away right now and will reply as soon as possible."
+msgstr "Olá! Estou ausente no momento e respondo assim que possível."
+
+#: zapzap/features/settings/pages/automation/view.py:163
+msgid "One reply per conversation every"
+msgstr "Uma resposta por conversa a cada"
+
+#: zapzap/features/settings/pages/automation/view.py:164
+msgid ""
+"The same contact does not get another automatic reply within this interval."
+msgstr "O mesmo contato não recebe outra resposta automática dentro desse intervalo."
+
+#: zapzap/features/settings/pages/automation/view.py:166
+#, python-brace-format
+msgid "{} h"
+msgstr "{} h"
+
+#: zapzap/features/settings/pages/automation/view.py:170
+msgid "Ignore groups"
+msgstr "Ignorar grupos"
+
+#: zapzap/features/settings/pages/automation/view.py:171
+msgid "Never reply automatically in group chats."
+msgstr "Nunca responder automaticamente em grupos."
+
+#: zapzap/features/settings/pages/automation/view.py:177
+msgid "Only when idle for"
+msgstr "Só quando inativo por"
+
+#: zapzap/features/settings/pages/automation/view.py:178
+msgid ""
+"Reply only if ZapZap had no focus or activity for this long. 0 = always."
+msgstr "Responder só se o ZapZap ficou sem foco ou atividade por esse tempo. 0 = sempre."
+
+#: zapzap/features/settings/pages/automation/view.py:181
+#: zapzap/features/settings/pages/automation/view.py:243
+#, python-brace-format
+msgid "{} min"
+msgstr "{} min"
+
+#: zapzap/features/settings/pages/automation/view.py:187
+msgid "Only within a daily window"
+msgstr "Só dentro de uma janela diária"
+
+#: zapzap/features/settings/pages/automation/view.py:188
+msgid "Restrict the away reply to the hours below."
+msgstr "Restringe a resposta de ausência ao horário abaixo."
+
+#: zapzap/features/settings/pages/automation/view.py:194
+#: zapzap/features/settings/pages/automation/view.py:199
+msgid "Window start"
+msgstr "Início da janela"
+
+#: zapzap/features/settings/pages/automation/view.py:195
+msgid "HH:MM. The window may cross midnight (e.g. 18:00 to 08:00)."
+msgstr "HH:MM. A janela pode cruzar a meia-noite (ex.: 18:00 a 08:00)."
+
+#: zapzap/features/settings/pages/automation/view.py:202
+#: zapzap/features/settings/pages/automation/view.py:205
+msgid "Window end"
+msgstr "Fim da janela"
+
+#: zapzap/features/settings/pages/automation/view.py:202
+msgid "HH:MM."
+msgstr "HH:MM."
+
+#: zapzap/features/settings/pages/automation/view.py:214
+msgid "Whole weekend"
+msgstr "Fim de semana inteiro"
+
+#: zapzap/features/settings/pages/automation/view.py:215
+msgid "Also reply all day on Saturdays and Sundays."
+msgstr "Responder também o dia todo aos sábados e domingos."
+
+#: zapzap/features/settings/pages/automation/view.py:227
+#: zapzap/features/settings/pages/automation/view.py:257
+msgid "Scheduled messages"
+msgstr "Mensagens agendadas"
+
+#: zapzap/features/settings/pages/automation/view.py:228
+msgid "Create them from the Chat menu (Schedule message…, Ctrl+Shift+A)."
+msgstr "Crie pelo menu Bate-papo (Agendar mensagem…, Ctrl+Shift+A)."
+
+#: zapzap/features/settings/pages/automation/view.py:232
+msgid "Enable scheduled messages"
+msgstr "Ativar mensagens agendadas"
+
+#: zapzap/features/settings/pages/automation/view.py:239
+msgid "Late tolerance"
+msgstr "Tolerância de atraso"
+
+#: zapzap/features/settings/pages/automation/view.py:240
+msgid ""
+"If ZapZap was closed at the time, still send when the delay is below this; "
+"otherwise mark it expired."
+msgstr "Se o ZapZap estava fechado na hora, ainda envia quando o atraso for menor que isso; senão marca como expirada."
+
+#: zapzap/features/settings/pages/automation/view.py:260
+msgid "No scheduled messages."
+msgstr "Nenhuma mensagem agendada."
+
+#: zapzap/features/settings/pages/automation/view.py:265
+msgid "Resend now"
+msgstr "Reenviar agora"
+
 #: zapzap/features/settings/pages/language_downloads/controller.py:145
 #: zapzap/features/settings/pages/language_downloads/view.py:84
 #: zapzap/ui/components/spellcheck_language_picker_dialog.py:255
@@ -4033,124 +4296,131 @@ msgstr "Adicionar {language}"
 msgid "Add this recent language to the temporary selection."
 msgstr "Adicione este idioma recente à seleção temporária."
 
-#: zapzap/ui/components/main_window.py:138
+#: zapzap/ui/components/main_window.py:141
 msgid "File"
 msgstr "Arquivo"
 
-#: zapzap/ui/components/main_window.py:139
+#: zapzap/ui/components/main_window.py:142
 msgid "View"
 msgstr "Exibir"
 
-#: zapzap/ui/components/main_window.py:140
+#: zapzap/ui/components/main_window.py:143
 msgid "Chat"
 msgstr "Bate-papo"
 
-#: zapzap/ui/components/main_window.py:141
+#: zapzap/ui/components/main_window.py:144
 msgid "Users"
 msgstr "Contas"
 
-#: zapzap/ui/components/main_window.py:142
+#: zapzap/ui/components/main_window.py:145
 msgid "Help"
 msgstr "Ajuda"
 
-#: zapzap/ui/components/main_window.py:144
+#: zapzap/ui/components/main_window.py:147
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: zapzap/ui/components/main_window.py:146
+#: zapzap/ui/components/main_window.py:149
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
-#: zapzap/ui/components/main_window.py:148
+#: zapzap/ui/components/main_window.py:151
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: zapzap/ui/components/main_window.py:150
+#: zapzap/ui/components/main_window.py:153
 msgid "Ctrl+0"
 msgstr "Ctrl+0"
 
-#: zapzap/ui/components/main_window.py:152
+#: zapzap/ui/components/main_window.py:155
 msgid "Ctrl++"
 msgstr "Ctrl++"
 
-#: zapzap/ui/components/main_window.py:154
+#: zapzap/ui/components/main_window.py:157
 msgid "Ctrl+-"
 msgstr "Ctrl+-"
 
-#: zapzap/ui/components/main_window.py:155
+#: zapzap/ui/components/main_window.py:158
 msgid "Toggle full screen"
 msgstr "Alternar tela cheia"
 
-#: zapzap/ui/components/main_window.py:156
+#: zapzap/ui/components/main_window.py:159
 msgid "F11"
 msgstr "F11"
 
-#: zapzap/ui/components/main_window.py:157
+#: zapzap/ui/components/main_window.py:160
 msgid "Open DevTools"
 msgstr "Abrir DevTools"
 
-#: zapzap/ui/components/main_window.py:158
+#: zapzap/ui/components/main_window.py:161
 msgid "Ctrl+Shift+I"
 msgstr "Ctrl+Shift+I"
 
-#: zapzap/ui/components/main_window.py:159
+#: zapzap/ui/components/main_window.py:162
 msgid "Grid View"
 msgstr "Visualização em grade"
 
-#: zapzap/ui/components/main_window.py:160
+#: zapzap/ui/components/main_window.py:163
 msgid "Ctrl+G"
 msgstr "Ctrl+G"
 
-#: zapzap/ui/components/main_window.py:161
+#: zapzap/ui/components/main_window.py:164
 msgid "Show sidebar"
 msgstr "Exibir barra lateral"
 
-#: zapzap/ui/components/main_window.py:163
+#: zapzap/ui/components/main_window.py:166
 msgid "Ctrl+Alt+1"
 msgstr "Ctrl+Alt+1"
 
-#: zapzap/ui/components/main_window.py:165
+#: zapzap/ui/components/main_window.py:168
 msgid "Ctrl+Alt+2"
 msgstr "Ctrl+Alt+2"
 
-#: zapzap/ui/components/main_window.py:167
+#: zapzap/ui/components/main_window.py:170
 msgid "Ctrl+Alt+3"
 msgstr "Ctrl+Alt+3"
 
-#: zapzap/ui/components/main_window.py:168
+#: zapzap/ui/components/main_window.py:171
 msgid "Reload"
 msgstr "Recarregar"
 
-#: zapzap/ui/components/main_window.py:169
+#: zapzap/ui/components/main_window.py:172
 msgid "F5"
 msgstr "F5"
 
-#: zapzap/ui/components/main_window.py:170
+#: zapzap/ui/components/main_window.py:173
 msgid "New chat"
 msgstr "Novo bate-papo"
 
-#: zapzap/ui/components/main_window.py:171
+#: zapzap/ui/components/main_window.py:174
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: zapzap/ui/components/main_window.py:172
+#: zapzap/ui/components/main_window.py:175
 msgid "By number phone"
 msgstr "Por número de telefone"
 
-#: zapzap/ui/components/main_window.py:173
+#: zapzap/ui/components/main_window.py:176
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: zapzap/ui/components/main_window.py:174
+#: zapzap/ui/components/main_window.py:177
 msgid "Quick phrases…"
 msgstr "Frases prontas…"
 
-#: zapzap/ui/components/main_window.py:175
-#, fuzzy
+#: zapzap/ui/components/main_window.py:178
 msgid "Ctrl+Shift+F"
-msgstr "Ctrl+Shift+I"
+msgstr "Ctrl+Shift+F"
 
-#: zapzap/ui/components/main_window.py:177
+#: zapzap/ui/components/main_window.py:179
+msgid "Schedule message…"
+msgstr "Agendar mensagem…"
+
+#: zapzap/ui/components/main_window.py:180
+msgid "Ctrl+Shift+A"
+msgstr "Ctrl+Shift+A"
+
+#: zapzap/ui/components/main_window.py:182
 msgid "Ctrl+Shift+/, Ctrl+?"
 msgstr "Ctrl+Shift+/, Ctrl+?"
 
@@ -4325,7 +4595,9 @@ msgstr "Reiniciar agora"
 
 #: zapzap/ui/components/quick_phrase_picker_dialog.py:102
 msgid "Choose a phrase to insert in the message box. You still press send."
-msgstr "Escolha uma frase para inserir na caixa de mensagem. O envio continua sendo seu."
+msgstr ""
+"Escolha uma frase para inserir na caixa de mensagem. O envio continua sendo "
+"seu."
 
 #: zapzap/ui/components/quick_phrase_picker_dialog.py:122
 msgid "Search by shortcut, title or text"
@@ -4364,6 +4636,7 @@ msgstr "Código do país"
 
 #: zapzap/ui/components/send_message_to_number_dialog.py:158
 #: zapzap/ui/components/send_message_to_number_dialog.py:181
+#: zapzap/ui/components/schedule_message_dialog.py:144
 msgid "Phone number"
 msgstr "Número de telefone"
 
@@ -4397,6 +4670,7 @@ msgid "Message character count"
 msgstr "Contagem de caracteres da mensagem"
 
 #: zapzap/ui/components/send_message_to_number_dialog.py:220
+#: zapzap/ui/components/schedule_message_dialog.py:177
 msgid "Hello! How are you?"
 msgstr "Olá! Tudo bem?"
 
@@ -4723,6 +4997,87 @@ msgstr "Esta operação de dicionário já está em andamento."
 msgid "Unknown dictionary error."
 msgstr "Erro desconhecido de dicionário."
 
+#: zapzap/ui/components/schedule_message_dialog.py:117
+msgid "The message is sent automatically at the chosen time."
+msgstr "A mensagem é enviada automaticamente no horário escolhido."
+
+#: zapzap/ui/components/schedule_message_dialog.py:119
+msgid "Account: {}"
+msgstr "Conta: {}"
+
+#: zapzap/ui/components/schedule_message_dialog.py:140
+msgid "Phone number (international)"
+msgstr "Número de telefone (internacional)"
+
+#: zapzap/ui/components/schedule_message_dialog.py:142
+msgid "Example: +55 11 99999-9999"
+msgstr "Exemplo: +55 11 99999-9999"
+
+#: zapzap/ui/components/schedule_message_dialog.py:146
+#: zapzap/ui/components/schedule_message_dialog.py:151
+msgid "Date and time"
+msgstr "Data e hora"
+
+#: zapzap/ui/components/schedule_message_dialog.py:160
+msgid "Number with country code. Date as YYYY-MM-DD HH:MM (local time)."
+msgstr "Número com código do país. Data como AAAA-MM-DD HH:MM (hora local)."
+
+#: zapzap/ui/components/schedule_message_dialog.py:168
+#: zapzap/ui/components/schedule_message_dialog.py:178
+msgid "Message"
+msgstr "Mensagem"
+
+#: zapzap/ui/components/schedule_message_dialog.py:180
+msgid "Type the message. Press Control+Enter to schedule."
+msgstr "Digite a mensagem. Pressione Control+Enter para agendar."
+
+#: zapzap/ui/components/schedule_message_dialog.py:198
+msgid "Automation is disabled"
+msgstr "Automação desativada"
+
+#: zapzap/ui/components/schedule_message_dialog.py:200
+msgid "Unofficial automation"
+msgstr "Automação não oficial"
+
+#: zapzap/ui/components/schedule_message_dialog.py:203
+msgid "Enable it in Settings > Automation, or the message will only wait."
+msgstr "Ative em Configurações > Automação, senão a mensagem só fica aguardando."
+
+#: zapzap/ui/components/schedule_message_dialog.py:205
+msgid ""
+"Sent over WhatsApp Web with a random delay; the number may be restricted or "
+"banned."
+msgstr "Enviada por cima do WhatsApp Web com atraso aleatório; o número pode ser restringido ou banido."
+
+#: zapzap/ui/components/schedule_message_dialog.py:221
+#: zapzap/ui/components/schedule_message_dialog.py:224
+msgid "Schedule"
+msgstr "Agendar"
+
+#: zapzap/ui/components/schedule_message_dialog.py:245
+msgid "Enter a valid international number, with the country code."
+msgstr "Informe um número internacional válido, com o código do país."
+
+#: zapzap/ui/components/schedule_message_dialog.py:247
+msgid "Enter the message text."
+msgstr "Informe o texto da mensagem."
+
+#: zapzap/ui/components/schedule_message_dialog.py:248
+msgid "The message is too long."
+msgstr "A mensagem é longa demais."
+
+#: zapzap/ui/components/schedule_message_dialog.py:250
+msgid "Use the format YYYY-MM-DD HH:MM."
+msgstr "Use o formato AAAA-MM-DD HH:MM."
+
+#: zapzap/ui/components/schedule_message_dialog.py:253
+msgid "Choose a date and time in the future."
+msgstr "Escolha uma data e hora no futuro."
+
+#: zapzap/ui/components/schedule_message_dialog.py:256
+msgid "Invalid data."
+msgstr "Dados inválidos."
+
 #: zapzap/ui/components/card_user.py:158 zapzap/ui/components/card_user.py:159
 #: zapzap/ui/components/card_user.py:282 zapzap/ui/components/card_user.py:506
 #: zapzap/ui/components/card_user.py:510
@@ -4956,9 +5311,6 @@ msgstr "Conta {name}, desativada."
 
 #~ msgid "Configure the HTTP/SOCKS proxy used by Qt WebEngine."
 #~ msgstr "Configure o proxy HTTP/SOCKS usado pelo Qt WebEngine."
-
-#~ msgid "Enable proxy"
-#~ msgstr "Ativar proxy"
 
 #~ msgid "Proxy type"
 #~ msgstr "Tipo de proxy"
@@ -5310,9 +5662,6 @@ msgstr "Conta {name}, desativada."
 #~ msgid "Privacidade e rede"
 #~ msgstr "Privacidade e rede"
 
-#~ msgid "General"
-#~ msgstr "Geral"
-
 #~ msgid "Click to generate new colors for the icon"
 #~ msgstr "Clique para gerar novas cores para o ícone"
 
@@ -5428,9 +5777,6 @@ msgstr "Conta {name}, desativada."
 #~ msgstr ""
 #~ "Para alterar o som da notificação, acesse as configurações do WhatsApp "
 #~ "usando o ⚙ (engrenagem) botão na interface principal do WhatsApp."
-
-#~ msgid "Cache and Storage"
-#~ msgstr "Cache e Armazenamento"
 
 #~ msgid "0 MB"
 #~ msgstr "0 MB"

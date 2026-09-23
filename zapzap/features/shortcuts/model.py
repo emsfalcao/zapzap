@@ -48,5 +48,6 @@ class ShortcutsModel:
             (_("Reload pages"), "F5"),
             (_("New conversation by phone number"), "Ctrl + M"),
             (_("Quick phrases"), "Ctrl + Shift + F"),
+            (_("Schedule message"), "Ctrl + Shift + A"),
             (_("New account"), "Ctrl + U"),
         ]

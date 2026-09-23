@@ -27,6 +27,9 @@ from zapzap.ui.components.quick_phrase_picker_dialog import (
 from zapzap.ui.components.send_message_to_number_dialog import (
     SendMessageToNumberDialog,
 )
+from zapzap.core.config.settings.automation import AutomationSettings
+from zapzap.features.automation.log import log_event
+from zapzap.ui.components.schedule_message_dialog import ScheduleMessageDialog
 
 
 class MainWindowController(MainWindowView):
@@ -58,6 +61,7 @@ class MainWindowController(MainWindowView):
         self._last_sanitized_key = None
         self._send_message_dialog = None
         self._quick_phrases_dialog = None
+        self._schedule_dialog = None
         self.theme_action_group = None
         self._setup_ui()
         self.update_state.changed.connect(self._on_update_info_changed)
@@ -144,6 +148,7 @@ class MainWindowController(MainWindowView):
         self.actionNew_chat.triggered.connect(self.new_chat)
         self.actionBy_phone_number.triggered.connect(self.new_chat_by_phone)
         self.actionQuick_phrases.triggered.connect(self.open_quick_phrases)
+        self.actionSchedule_message.triggered.connect(self.open_schedule_message)
         self.actionSobre_o_ZapZap.triggered.connect(self.open_about)
 
     def _connect_view_menu_actions(self):
@@ -278,6 +283,43 @@ class MainWindowController(MainWindowView):
 
         if accepted and text:
             page.page().insert_text_in_composer(text)
+
+    def open_schedule_message(self):
+        """Fork FalcaoNet: schedule a message from the current account.
+
+        The item is only persisted here; sending is done later by
+        ``features.automation`` when automation is enabled in Settings.
+        """
+        page = self._current_page_or_alert()
+        if page is None:
+            return
+
+        if self._schedule_dialog is not None:
+            self._schedule_dialog.raise_()
+            self._schedule_dialog.activateWindow()
+            return
+
+        settings = AutomationSettings()
+        user = page.user
+        account_label = user.name or _("Account {}").format(page.page_index)
+        dialog = ScheduleMessageDialog(
+            self,
+            user_id=str(user.id),
+            account_label=account_label,
+            automation_enabled=settings.enabled and settings.scheduled_enabled,
+        )
+        self._schedule_dialog = dialog
+        try:
+            accepted = dialog.exec() == QDialog.DialogCode.Accepted
+            item = dialog.scheduled_message
+        finally:
+            self._schedule_dialog = None
+            dialog.deleteLater()
+
+        if accepted and item is not None:
+            settings.add_scheduled(item)
+            log_event(item.user_id, "agendada", item.number, "criada", len(item.text))
+            page.page().show_toast(_("Message scheduled"), 2000)
 
     def _reset_zoom(self):
         """Resetar o fator de zoom da página atual."""

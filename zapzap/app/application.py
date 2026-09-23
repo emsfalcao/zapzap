@@ -33,6 +33,7 @@ from zapzap.features.notifications.notification_service import (
     is_flatpak,
 )
 from zapzap.features.reporting.coordinator import ReportingCoordinator
+from zapzap.features.automation.service import AutomationService
 from zapzap.core.reporting.capture import CrashSessionMonitor
 
 
@@ -134,6 +135,12 @@ def main():
         )
     )
 
+    # Fork FalcaoNet: automação (ausência/agendadas) pendurada no app, não na
+    # janela — sobrevive ao restartInterface e localiza o navegador atual.
+    automation_service = AutomationService(app)
+    app._automation_service = automation_service
+    automation_service.start()
+
     # Fork FalcaoNet: sem provisionamento automático de dicionários (baixava do GitHub do autor no 1º start).
     # Os dicionários pt-BR/en-US vêm empacotados em QTWEBENGINE_DICTIONARIES_PATH pelo manifesto Flatpak.
     desktop_application_dbus = None
@@ -163,6 +170,7 @@ def main():
         app._reporting_coordinator = reporting_coordinator
         QTimer.singleShot(0, reporting_coordinator.show_prepared_crash)
 
+    app.aboutToQuit.connect(automation_service.shutdown)
     app.aboutToQuit.connect(NotificationService.shutdown)
     app.aboutToQuit.connect(crash_session_monitor.close)
     if desktop_application_dbus is not None:

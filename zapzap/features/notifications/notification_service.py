@@ -10,6 +10,7 @@ from PyQt6.QtWebEngineCore import QWebEngineNotification
 
 from zapzap.core.config.settings_manager import SettingsManager
 from zapzap import __appname__
+from zapzap.features.automation.service import AutomationService
 
 from zapzap.features.notifications.portal_notification_backend import (
     PortalNotificationBackend
@@ -93,6 +94,16 @@ class NotificationService:
         page: WebView,
         notification: QWebEngineNotification
     ):
+        # =================================================
+        # 0. Fork FalcaoNet: gancho da resposta automática de ausência.
+        #    Antes das saídas antecipadas, para funcionar mesmo com as
+        #    notificações do app desligadas. Nunca derruba a notificação.
+        # =================================================
+        try:
+            AutomationService.notify_incoming(page, notification)
+        except Exception:
+            logger.warning("Automation hook failed", exc_info=True)
+
         # =================================================
         # 1. Regras globais (app / usuário)
         # =================================================

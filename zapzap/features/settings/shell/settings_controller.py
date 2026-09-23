@@ -154,6 +154,12 @@ class SettingsController(SettingsView):
                 "QuickPhrasesSettingsController",
             ),
             SettingsPageDescriptor(
+                "automation",
+                _("Automation"),
+                "zapzap.features.settings.pages.automation.controller",
+                "AutomationSettingsController",
+            ),
+            SettingsPageDescriptor(
                 self.LANGUAGE_DOWNLOADS_PAGE_ID,
                 _("Language and Download"),
                 "zapzap.features.settings.pages.language_downloads.controller",

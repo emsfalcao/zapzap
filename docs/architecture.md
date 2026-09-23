@@ -218,6 +218,29 @@ URL ficam em `features/browser/web/open_chat.py`; após a aceitação,
 `PageController` navega diretamente para `web.whatsapp.com/send`, sem injetar
 `window.prompt` nem interceptar outros prompts do WhatsApp Web.
 
+Fork FalcaoNet — automação (`features.automation`): resposta automática de
+ausência e mensagens agendadas agem por cima do WhatsApp Web (DOM/JS
+injetado), o que não é oficial e pode gerar restrição ou banimento do número;
+por isso tudo vem desligado por padrão e a página de Configurações exibe o
+aviso. O `AutomationService` fica pendurado no `QApplication` (sobrevive ao
+`restartInterface`) e localiza o navegador por `app.getWindow().browser`. Todos
+os seletores de DOM e os scripts ficam em `features/automation/dom.py`, sempre
+com `json.dumps` e retornando statuses estáveis (`ok`, `nao-logado`,
+`sem-compositor`, `sem-botao-enviar`, `chat-nao-abriu`, `numero-invalido`,
+`grupo`). Um único `AutomationRunner` serializa os envios de ambos os recursos:
+atraso humano aleatório (`automation/delay_min_s`–`delay_max_s`), conta ativa,
+logado (`#pane-side`/compositor), abrir chat, polling do cabeçalho até 10 s,
+verificação de grupo, `insert_text_in_composer` e clique no botão enviar do
+próprio WhatsApp (nunca Enter sintético). O limite global por hora
+(`automation/max_per_hour`) é consumido no instante do clique. A resposta de
+ausência é disparada pelo gancho em `NotificationService.notify`, antes das
+saídas antecipadas, e abre o chat com `notification.click()`; o cooldown por
+conversa (`automation/away/replied`) usa `tag()` ou `title()` prefixado pela
+conta. O agendador (`QTimer` de 30 s) abre o chat por deeplink
+`send?phone=` sem `text` via `xdg_open_chat`, respeita a tolerância de atraso e
+faz até 3 tentativas com 5 min de espera. Cada evento vira uma linha em
+`automacao.log` (rotativo, 1 MB × 3, sem conteúdo da mensagem — só o tamanho).
+
 A central nativa de doações pertence a `features.donation` e é uma página única
 da pilha do `BrowserController`, ao lado da grade e das páginas de conta. O
 coração da sidebar, Configurações, Sobre, bandeja e lembrete de apoio convergem
@@ -547,6 +570,7 @@ remover arquivo tem efeito imediato, enquanto a seleção só persiste em
 |---|---|
 | `accounts` | entidade e persistência de contas |
 | `alerts` | diálogos, abertura HTTPS externa e feedback compartilhados |
+| `automation` | fork FalcaoNet: resposta de ausência e mensagens agendadas por cima do WhatsApp Web (runner único, freios e log) |
 | `browser` | perfis, páginas, sidebar, scripts e navegação |
 | `customizations` | CSS, JavaScript e extensões por escopo |
 | `dictionaries` | descoberta, seleção global/migração e instalação de dicionários WebEngine |
@@ -639,6 +663,7 @@ Este bloco é verificado automaticamente contra
 - `zapzap.features.accounts`
 - `zapzap.features.accounts.domain`
 - `zapzap.features.alerts`
+- `zapzap.features.automation`
 - `zapzap.features.browser`
 - `zapzap.features.browser.shell`
 - `zapzap.features.browser.web`
@@ -657,12 +682,14 @@ Este bloco é verificado automaticamente contra
 - `zapzap.features.settings.pages.accounts`
 - `zapzap.features.settings.pages.advanced_customizations`
 - `zapzap.features.settings.pages.appearance`
+- `zapzap.features.settings.pages.automation`
 - `zapzap.features.settings.pages.debugging`
 - `zapzap.features.settings.pages.language_downloads`
 - `zapzap.features.settings.pages.network_privacy`
 - `zapzap.features.settings.pages.notifications`
 - `zapzap.features.settings.pages.performance_experimental`
 - `zapzap.features.settings.pages.permissions`
+- `zapzap.features.settings.pages.quick_phrases`
 - `zapzap.features.settings.pages.system_startup`
 - `zapzap.features.settings.shell`
 - `zapzap.features.shortcuts`

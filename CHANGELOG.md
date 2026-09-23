@@ -25,6 +25,29 @@ on top of the upstream version below. Not part of any upstream release.
   sent by the application — the user still presses send. Covered by
   `test_quick_phrases_settings.py`, `test_quick_phrase_picker_dialog.py` and
   `test_insert_text_in_composer.py`; pt_BR translated.
+- Automation (phase 3): away auto-reply and scheduled messages on top of
+  WhatsApp Web (DOM/JS). Unofficial — the Settings page warns that the number
+  may be restricted or banned — and everything is off by default. Brakes:
+  random human-like delay before each send, global hourly limit, one reply per
+  conversation per cooldown, skip groups, only when idle, optional daily window
+  (may cross midnight, whole weekend), late tolerance for scheduled items,
+  3 attempts with 5 min between them, one send at a time through a single
+  runner, and a rotating `automacao.log` without message content. New Settings
+  page "Automation", dialog "Schedule message…" (Chat menu, `Ctrl+Shift+A`,
+  same E.164 validation as "By phone number"), all DOM selectors concentrated
+  in `features/automation/dom.py`. Covered by `test_automation_settings.py`,
+  `test_automation_dom.py`, `test_automation_runner.py`,
+  `test_away_reply_service.py`, `test_scheduled_send_service.py` and
+  `test_schedule_message_dialog.py`; pt_BR translated.
+
+### Fixed
+
+- `PageController.show_toast` interpolated the message into JavaScript by
+  f-string; it is now embedded as a JSON literal (quotes and backslashes no
+  longer break the script).
+- `zapzap.features.settings.pages.quick_phrases` was missing from
+  `tool.setuptools.packages` (and from the architecture inventory), so
+  `check_unused_code.py --packages-only` failed; both lists are in sync again.
 
 ### Changed
 

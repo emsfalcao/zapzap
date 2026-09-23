@@ -396,7 +396,13 @@ class PageController(QWebEnginePage):
             CustomizationsManager.js_injection_script(js_entries))
 
     def show_toast(self, message, duration=1000):
-        """Exibe um toast na página utilizando JavaScript."""
+        """Exibe um toast na página utilizando JavaScript.
+
+        Fork FalcaoNet: a mensagem entra no JS como literal JSON (antes era
+        interpolada em f-string — aspas ou barras quebravam o script).
+        """
+        message_literal = json.dumps(str(message))
+        duration = int(duration)
         script = f"""
         (function() {{
             var toast = document.createElement('div');
@@ -411,7 +417,7 @@ class PageController(QWebEnginePage):
             toast.style.fontSize = '{Typography.px(Typography.BODY)}';
             toast.style.zIndex = '9999';
             toast.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-            toast.innerText = '{message}';
+            toast.innerText = {message_literal};
 
             document.body.appendChild(toast);
 
