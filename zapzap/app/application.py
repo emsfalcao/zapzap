@@ -165,7 +165,6 @@ def main():
 
     app.aboutToQuit.connect(NotificationService.shutdown)
     app.aboutToQuit.connect(crash_session_monitor.close)
-    app.aboutToQuit.connect(system_dictionary_provisioner.close)
     if desktop_application_dbus is not None:
         app.aboutToQuit.connect(desktop_application_dbus.stop)
     app.aboutToQuit.connect(ThemeManager.stop)
