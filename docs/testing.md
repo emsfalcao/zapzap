@@ -95,6 +95,7 @@ documente o que ele protege.
 | `test_grid_thumbnail_cache.py` | limite físico/DPR, reutilização, fallback, seleção e ciclo de vida das miniaturas da grade |
 | `test_http_cache_size.py` | cache em MiB, tipos de cache, política de cookies, memória JavaScript, autocura persistida e fallbacks de perfil sem WebEngine real |
 | `test_initial_setup_ui.py` | onboarding, som, fechamento, permissões, dicionários e persistência |
+| `test_insert_text_in_composer.py` | inserção de frase pronta no compositor: texto como literal JSON, só DOM, sem envio, toast sem conversa |
 | `test_memory_benchmark.py` | procfs/USS, schema JSON/CSV/Markdown, isolamento WebEngine, factory stub, cenários e comparação relativa |
 | `test_network_privacy_settings_ui.py` | proxy exclusivamente global, strict proxy, credenciais, aplicar/descartar, feedback de falha do Qt, restauração e WebRTC |
 | `test_notification_sound_setting.py` | mapeamento de som e tipos dos hints Portal/Freedesktop |
@@ -104,6 +105,8 @@ documente o que ele protege.
 | `test_permissions_settings_ui.py` | grupos e ações globais/individuais de permissões |
 | `test_portal_notification_backend.py` | ciclo de vida, falhas, ações e token no backend Portal |
 | `test_qt_parameter_fallbacks.py` | escala, tema da bandeja, geometria, tipos e fail-closed do proxy global, zoom e download inválidos com autocura ou fallback restrito |
+| `test_quick_phrase_picker_dialog.py` | listagem, busca por atalho/título/texto, prévia, Enter/Esc e lista vazia do seletor de frases prontas |
+| `test_quick_phrases_settings.py` | normalização/validação de atalho, persistência JSON, ordenação, unicode, storage corrompido e página de Configurações das frases prontas |
 | `test_reporting.py` | sanitização, minimização, Markdown, fila/TTL e captura local de encerramentos inesperados |
 | `test_reporting_ui.py` | formulário em duas etapas, prévia canônica, edição, cancelamento, clipboard e abertura segura do GitHub |
 | `test_segmented_control.py` | seleção exclusiva, sinais, mouse, teclado, acessibilidade, tamanhos, raios e temas |
@@ -145,6 +148,7 @@ documente o que ele protege.
 - `test_grid_thumbnail_cache.py`
 - `test_http_cache_size.py`
 - `test_initial_setup_ui.py`
+- `test_insert_text_in_composer.py`
 - `test_memory_benchmark.py`
 - `test_network_privacy_settings_ui.py`
 - `test_notification_sound_setting.py`
@@ -154,6 +158,8 @@ documente o que ele protege.
 - `test_permissions_settings_ui.py`
 - `test_portal_notification_backend.py`
 - `test_qt_parameter_fallbacks.py`
+- `test_quick_phrase_picker_dialog.py`
+- `test_quick_phrases_settings.py`
 - `test_reporting.py`
 - `test_reporting_ui.py`
 - `test_segmented_control.py`

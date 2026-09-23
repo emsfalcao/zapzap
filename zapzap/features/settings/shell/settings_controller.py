@@ -148,6 +148,12 @@ class SettingsController(SettingsView):
                 "SystemStartupSettingsController",
             ),
             SettingsPageDescriptor(
+                "quick_phrases",
+                _("Quick phrases"),
+                "zapzap.features.settings.pages.quick_phrases.controller",
+                "QuickPhrasesSettingsController",
+            ),
+            SettingsPageDescriptor(
                 self.LANGUAGE_DOWNLOADS_PAGE_ID,
                 _("Language and Download"),
                 "zapzap.features.settings.pages.language_downloads.controller",

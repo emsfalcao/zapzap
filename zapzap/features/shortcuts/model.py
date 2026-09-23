@@ -47,5 +47,6 @@ class ShortcutsModel:
             (_("Zoom out"), "Ctrl + -"),
             (_("Reload pages"), "F5"),
             (_("New conversation by phone number"), "Ctrl + M"),
+            (_("Quick phrases"), "Ctrl + Shift + F"),
             (_("New account"), "Ctrl + U"),
         ]

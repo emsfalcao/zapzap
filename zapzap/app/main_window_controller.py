@@ -1,3 +1,5 @@
+from gettext import gettext as _
+
 from PyQt6.QtCore import QBuffer
 from PyQt6.QtCore import QEvent
 from PyQt6.QtCore import QIODevice
@@ -18,6 +20,10 @@ from zapzap.features.browser.shell.browser_controller import BrowserController
 from zapzap.features.settings.shell.settings_controller import SettingsController
 from zapzap.features.shortcuts.controller import ShortcutsController
 from zapzap.ui.components.main_window import MainWindowView
+from zapzap.core.config.settings.quick_phrases import QuickPhrasesSettings
+from zapzap.ui.components.quick_phrase_picker_dialog import (
+    QuickPhrasePickerDialog,
+)
 from zapzap.ui.components.send_message_to_number_dialog import (
     SendMessageToNumberDialog,
 )
@@ -51,6 +57,7 @@ class MainWindowController(MainWindowView):
         self.app_settings = None
         self._last_sanitized_key = None
         self._send_message_dialog = None
+        self._quick_phrases_dialog = None
         self.theme_action_group = None
         self._setup_ui()
         self.update_state.changed.connect(self._on_update_info_changed)
@@ -136,6 +143,7 @@ class MainWindowController(MainWindowView):
         self.actionReload.triggered.connect(self.browser.reload_pages)
         self.actionNew_chat.triggered.connect(self.new_chat)
         self.actionBy_phone_number.triggered.connect(self.new_chat_by_phone)
+        self.actionQuick_phrases.triggered.connect(self.open_quick_phrases)
         self.actionSobre_o_ZapZap.triggered.connect(self.open_about)
 
     def _connect_view_menu_actions(self):
@@ -238,6 +246,38 @@ class MainWindowController(MainWindowView):
 
         if accepted and target is not None:
             page.page().open_chat_by_number(target)
+
+    def open_quick_phrases(self):
+        """Fork FalcaoNet: pick a saved phrase and insert it in the composer.
+
+        Only fills the message box; the user still presses send.
+        """
+        page = self._current_page_or_alert()
+        if page is None:
+            return
+
+        if not QuickPhrasesSettings().enabled:
+            page.page().show_toast(
+                _("Quick phrases are disabled in Settings"), 2000
+            )
+            return
+
+        if self._quick_phrases_dialog is not None:
+            self._quick_phrases_dialog.raise_()
+            self._quick_phrases_dialog.activateWindow()
+            return
+
+        dialog = QuickPhrasePickerDialog(self)
+        self._quick_phrases_dialog = dialog
+        try:
+            accepted = dialog.exec() == QDialog.DialogCode.Accepted
+            text = dialog.chosen_text
+        finally:
+            self._quick_phrases_dialog = None
+            dialog.deleteLater()
+
+        if accepted and text:
+            page.page().insert_text_in_composer(text)
 
     def _reset_zoom(self):
         """Resetar o fator de zoom da página atual."""

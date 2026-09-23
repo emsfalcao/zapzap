@@ -11,6 +11,28 @@ This mandatory record starts after version 7.4.1. The 7.4.1 entry below is the
 historical baseline; older release summaries remain available in the GitHub
 releases and the AppStream metadata.
 
+## Fork FalcaoNet (branch `falcao`)
+
+Changes kept only in `emsfalcao/zapzap`, branch `falcao` (local Flatpak build),
+on top of the upstream version below. Not part of any upstream release.
+
+### Added
+
+- Quick phrases (frases prontas): a Settings page to save reusable texts
+  identified by a shortcut, and a picker (Chat menu, `Ctrl+Shift+F`) that
+  inserts the chosen text into the WhatsApp Web composer. The text reaches the
+  page as a JSON literal and is inserted through the DOM only; nothing is ever
+  sent by the application — the user still presses send. Covered by
+  `test_quick_phrases_settings.py`, `test_quick_phrase_picker_dialog.py` and
+  `test_insert_text_in_composer.py`; pt_BR translated.
+
+### Changed
+
+- Hardening for the local build: no dictionary catalog download (dictionaries
+  are converted at build time), no JavaScript addon loader, JavaScript
+  customizations disabled (CSS only), no update check, Flatpak sandbox without
+  `xdg-documents`/`xdg-pictures` and with PipeWire for screen sharing.
+
 ## [7.4.5] - 2026-09-23
 
 ### Added

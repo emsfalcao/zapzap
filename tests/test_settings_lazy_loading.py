@@ -41,6 +41,10 @@ PAGE_TYPES = (
         "SystemStartupSettingsController",
     ),
     (
+        "zapzap.features.settings.pages.quick_phrases.controller",
+        "QuickPhrasesSettingsController",
+    ),
+    (
         "zapzap.features.settings.pages.language_downloads.controller",
         "LanguageDownloadSettingsController",
     ),
@@ -197,6 +201,7 @@ class SettingsLazyLoadingTest(QtTestCase):
         "Notifications",
         "Permissions",
         "System and startup",
+        "Quick phrases",
         "Language and Download",
         "Privacy and Network",
         "Advanced Customizations",

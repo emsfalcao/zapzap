@@ -1,4 +1,5 @@
 from typing import cast
+import json
 import logging
 
 from PyQt6.QtWebEngineCore import QWebEnginePage
@@ -272,6 +273,38 @@ class PageController(QWebEnginePage):
             return
 
         self.runJavaScript(script)
+
+    def insert_text_in_composer(self, text, callback=None):
+        """Fork FalcaoNet: insert a quick phrase into WhatsApp Web's composer.
+
+        DOM only: the text is inserted with ``insertText`` (falling back to a
+        ``beforeinput`` event so the editor's own handler picks it up). The
+        message is never sent — no Enter, keyCode 13 or click is emitted; the
+        user sends it. The text reaches JS as a JSON literal, never by string
+        interpolation.
+        """
+        script = (
+            "(function(t){"
+            "var el=document.querySelector("
+            "'footer div[contenteditable=\"true\"][role=\"textbox\"]')"
+            "||document.querySelector('footer div[contenteditable=\"true\"]');"
+            "if(!el){return 'sem-compositor';}"
+            "el.focus();"
+            "var sel=window.getSelection();"
+            "if(sel&&sel.rangeCount===0){sel.selectAllChildren(el);sel.collapseToEnd();}"
+            "var ok=document.execCommand('insertText',false,t);"
+            "if(!ok){el.dispatchEvent(new InputEvent('beforeinput',"
+            "{inputType:'insertText',data:t,bubbles:true,cancelable:true}));}"
+            "return ok?'ok':'fallback';})(%s);"
+        ) % json.dumps(text)
+
+        def _on_result(result):
+            if result == "sem-compositor":
+                self.show_toast(_("Open a conversation first"), 2000)
+            if callback is not None:
+                callback(result)
+
+        self.runJavaScript(script, _on_result)
 
     def _on_link_hovered(self, url):
         """Armazena o URL do link quando o mouse passa sobre ele."""

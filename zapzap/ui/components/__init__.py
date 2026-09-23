@@ -36,6 +36,7 @@ from .settings_rows import (
     SettingsToggleSwitch,
 )
 from .settings_section import SettingsSection
+from .quick_phrase_picker_dialog import QuickPhrasePickerDialog
 from .send_message_to_number_dialog import SendMessageToNumberDialog
 from .spellcheck_language_picker_dialog import SpellcheckLanguagePickerDialog
 from .update_available_popover import UpdateAvailablePopover
